@@ -33,8 +33,9 @@ preload = (image) ->
   img = new Image
   img.src = image
 
-for image in ['icons.png', 'workflow.png', 'examples.jpg', 'gz-icon-hubble.png', 'gz-icon-sdss.png', 'gz-icon-ukidss.png', 'gz-icon-quizzes.png']
-  preload "/images/#{ image }"
+preload '/images/icons.png'
+preload '/images/workflow.png'
+preload '/images/examples.jpg'
 
 googleAnalytics.init account: 'UA-1224199-9', domain: 'galaxyzoo.org'
 

@@ -8,9 +8,6 @@ Config =
       sloan:
         id: '50217561516bcb0fda00000e'
         workflowId: '50217499516bcb0fda000002'
-      ukidss:
-        id: '5244909c3ae7402d53000001'
-        workflowId: '52449f803ae740540e000001'
     subjectCache: 1
     quiz:
       invitationId: '502bfa73516bcb3c600003e9'
@@ -25,9 +22,6 @@ Config =
       sloan:
         id: '50251c3b516bcb6ecb000002'
         workflowId: '50251c3b516bcb6ecb000002'
-      ukidss:
-        id: '5244909c3ae7402d53000001'
-        workflowId: '52449f803ae740540e000001'
     subjectCache: 5
     quiz:
       invitationId: '502bfa73516bcb3c600003e9'
@@ -42,9 +36,6 @@ Config =
       sloan:
         id: '50251c3b516bcb6ecb000002'
         workflowId: '50251c3b516bcb6ecb000002'
-      ukidss:
-        id: '5244909c3ae7402d53000001'
-        workflowId: '52449f803ae740540e000001'
     subjectCache: 5
     quiz:
       invitationId: '502bfa73516bcb3c600003e9'
@@ -59,9 +50,6 @@ Config =
       sloan:
         id: '50251c3b516bcb6ecb000002'
         workflowId: '50251c3b516bcb6ecb000002'
-      ukidss:
-        id: '5244909c3ae7402d53000001'
-        workflowId: '52449f803ae740540e000001'
     subjectCache: 5
     quiz:
       invitationId: '502bfa73516bcb3c600003e9'

@@ -16,19 +16,19 @@ class Question extends Spine.Model
     @answers or= { }
     @checkboxes or= { }
     @text or= hash.text
-    @title or= I18n.t 'questions', @i18nId(), 'title'
+    @title or= I18n.t 'questions', @id, 'title'
     hash.answerWith?.apply @
     super
   
   isTalk: =>
-    @id in ['candels-17', 'sloan-11', 'ukidss-11']
+    @id in ['candels-17', 'sloan-11']
   
   help: (text) ->
-    @helpText = I18n.t 'questions', @i18nId(), 'help'
+    @helpText = I18n.t 'questions', @id, 'help'
   
   answer: (text, { leadsTo: leadsTo, icon: icon, examples: examples, talk: talk } = { leadsTo: null, icon: null, examples: 0, talk: false }) ->
     id = "a-#{ _(@answers).keys().length }"
-    text = I18n.t 'questions', @i18nId(), 'answers', id
+    text = I18n.t 'questions', @id, 'answers', id
     @answers[id] = { text, leadsTo, icon, examples, talk }
   
   examples: =>
@@ -45,18 +45,12 @@ class Question extends Spine.Model
   checkbox: (text, { icon: icon, examples: examples } = { icon: null, examples: 0 }) ->
     checkbox = true
     id = "x-#{ _(@checkboxes).keys().length }"
-    text = I18n.t 'questions', @i18nId(), 'checkboxes', id
+    text = I18n.t 'questions', @id, 'checkboxes', id
     @checkboxes[id] = { checkbox, text, icon, examples }
   
   nextQuestionFrom: (answer) ->
     text = @answers[answer]?.leadsTo or @leadsTo
     question = @constructor.findByTreeAndText @tree, text
     question[0] or null
-  
-  i18nId: =>
-    if @id.match /ukidss/
-      @id.replace 'ukidss', 'sloan'
-    else
-      @id
 
 module.exports = Question
