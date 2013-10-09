@@ -5,7 +5,6 @@ SurveyGroup = require 'models/survey_group'
 SloanTree = require 'lib/sloan_tree'
 CandelsTree = require 'lib/candels_tree'
 UkidssTree = require 'lib/ukidss_tree'
-FerengiTree = require 'lib/ferengi_tree'
 UserGroup = require 'models/user_group'
 
 class Subject extends BaseSubject
@@ -25,16 +24,12 @@ class Subject extends BaseSubject
       id: Config.surveys.ukidss.id
       workflowId: Config.surveys.ukidss.workflowId
       tree: UkidssTree
-    ferengi:
-      id: Config.surveys.ferengi.id
-      workflowId: Config.surveys.ferengi.workflowId
-      tree: FerengiTree
   
   @url: (params) -> @withParams "/projects/galaxy_zoo/groups/#{ params.surveyId }/subjects", limit: params.limit
   @randomSurveyId: ->
     return @::surveys.sloan.id if UserGroup.current
     if Math.random() > 0.5
-      if Math.random() > (1/3) then @::surveys.ukidss.id else @::surveys.ferengi.id
+      @::surveys.ukidss.id
     else
       if Math.random() > (1/3) then @::surveys.sloan.id else @::surveys.candels.id
   
@@ -52,7 +47,6 @@ class Subject extends BaseSubject
     idCounts[@::surveys.sloan.id] = 0
     idCounts[@::surveys.candels.id] = 0
     idCounts[@::surveys.ukidss.id] = 0
-    idCounts[@::surveys.ferengi.id] = 0
     idCounts[@randomSurveyId()] += 1 for i in [1..count]
     
     hasTriggered = false

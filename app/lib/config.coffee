@@ -11,9 +11,6 @@ Config =
       ukidss:
         id: '5244909c3ae7402d53000001'
         workflowId: '52449f803ae740540e000001'
-      ferengi:
-        id: '5249cbce3ae740728d000001'
-        workflowId: '5249cbc33ae74070ed000001'
     subjectCache: 1
     quiz:
       invitationId: '502bfa73516bcb3c600003e9'
@@ -31,9 +28,6 @@ Config =
       ukidss:
         id: '5244909c3ae7402d53000001'
         workflowId: '52449f803ae740540e000001'
-      ferengi:
-        id: '5249cbce3ae740728d000001'
-        workflowId: '5249cbc33ae74070ed000001'
     subjectCache: 5
     quiz:
       invitationId: '502bfa73516bcb3c600003e9'
@@ -51,9 +45,6 @@ Config =
       ukidss:
         id: '5244909c3ae7402d53000001'
         workflowId: '52449f803ae740540e000001'
-      ferengi:
-        id: '5249cbce3ae740728d000001'
-        workflowId: '5249cbc33ae74070ed000001'
     subjectCache: 5
     quiz:
       invitationId: '502bfa73516bcb3c600003e9'
@@ -71,9 +62,6 @@ Config =
       ukidss:
         id: '5244909c3ae7402d53000001'
         workflowId: '52449f803ae740540e000001'
-      ferengi:
-        id: '5249cbce3ae740728d000001'
-        workflowId: '5249cbc33ae74070ed000001'
     subjectCache: 5
     quiz:
       invitationId: '502bfa73516bcb3c600003e9'
