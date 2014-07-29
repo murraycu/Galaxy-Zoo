@@ -1,6 +1,9 @@
 <nav>
   <ul>
     <li>
+      <a href="#/murrayctest" data-nav="/murrayctest">Murrayctest</a>
+    </li>
+    <li>
       <a href="#/classify" data-nav="/classify"><%- I18n.t 'navigation.classify' %></a>
     </li>
     <li>

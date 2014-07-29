@@ -11,6 +11,7 @@ Interactive = require 'controllers/interactive'
 Astronomers = require 'controllers/astronomers'
 UserGroups = require 'controllers/user_groups'
 Quizzer = require 'controllers/quizzer'
+Murrayctest = require 'controllers/murrayctest'
 
 class Main extends Spine.Stack
   el: '#main'
@@ -28,6 +29,7 @@ class Main extends Spine.Stack
     astronomers: Astronomers
     user_groups: UserGroups
     quizzer: Quizzer
+    murrayctest: Murrayctest
     
   default: 'home'
   
@@ -47,5 +49,6 @@ class Main extends Spine.Stack
     '/astronomers': 'astronomers'
     '/user_groups/:id': 'user_groups'
     '/quiz': 'quizzer'
+    '/murrayctest': 'murrayctest'
 
 module.exports = Main
