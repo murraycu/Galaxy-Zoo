@@ -1,14 +1,21 @@
 Spine = require 'spine'
+SloanTree = require 'lib/sloan_tree'
+JQuery = require 'jqueryify'
+Underscore = require 'underscore/underscore'
+MurraycTreeExporter = require 'controllers/murrayc_tree_exporter'
+
 
 class Murrayctest extends Spine.Controller
   constructor: ->
     super
-  
+
   active: ->
     super
     @render()
-  
+      
   render: ->
-    @html("murrayc test");
+    exporter = new MurraycTreeExporter
+    txt = exporter.getXmlForTree()
+    @html(txt)
 
 module.exports = Murrayctest
