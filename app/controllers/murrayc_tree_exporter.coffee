@@ -49,12 +49,14 @@ class MurraycTreeExporter
       if (questionNext != null)
         elementAnswer.setAttribute("leadsTo", questionNext.id);
 
-      # TODO: Deal with checkboxes. These are just a sign that the
-      # question can have multiple answers.
-      # The leadTo is therefore for the whole question.
-      # Maybe just mark the question as allowing multiple-selection of answers
-      # and specify a leadTo for the whole question, to be used when there is
-      # no leadTo for the answer.
+    for key, checkbox of question.checkboxes
+      elementCheckbox = @_addNode(elementQuestion, "checkbox")
+      elementCheckbox.setAttribute("id", key)
+      elementCheckbox.setAttribute("icon", checkbox.icon);
+
+      # We use a child node, instead of an attribute, for this because it could contain newlines.
+      @_addNodeWithText(elementCheckbox, "text", checkbox.text)
+
          
 
    _getQuestionsForQuestionAnswers: (question) ->
