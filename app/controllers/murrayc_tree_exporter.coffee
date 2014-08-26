@@ -21,26 +21,29 @@ class MurraycTreeExporter
     elementCreated = @xmlDoc.createTextNode(childText)
     return  parentNode.appendChild(elementCreated) # Note that this returns a different type than createElement() - one that you can call append() on.
 
+  _unescapeHtml: (text) ->
+    return JQuery("<div />").html(text).text();
+
   _addNodeWithText: (parentNode, childNodeName, childText) ->
     element = @_addNode(parentNode, childNodeName)
     return @_addTextNode(element, childText)
 
   _addQuestionNode: (question) ->
     elementQuestion = @_addNode(@root, "question")
-    elementQuestion.setAttribute("id", question.id);
+    elementQuestion.setAttribute("id", question.id)
 
     # We use child nodes, instead of attributes, for these because they could contain newlines.
-    @_addNodeWithText(elementQuestion, "title", question.title)
-    @_addNodeWithText(elementQuestion, "text", question.text)
-    @_addNodeWithText(elementQuestion, "help", question.helpText)
+    @_addNodeWithText(elementQuestion, "title", @_unescapeHtml(question.title))
+    @_addNodeWithText(elementQuestion, "text", @_unescapeHtml(question.text))
+    @_addNodeWithText(elementQuestion, "help", @_unescapeHtml(question.helpText))
 
     for key, answer of question.answers
       elementAnswer = @_addNode(elementQuestion, "answer")
       elementAnswer.setAttribute("id", key)
-      elementAnswer.setAttribute("icon", answer.icon);
+      elementAnswer.setAttribute("icon", answer.icon)
 
       # We use a child node, instead of an attribute, for this because it could contain newlines.
-      @_addNodeWithText(elementAnswer, "text", answer.text)
+      @_addNodeWithText(elementAnswer, "text", @_unescapeHtml(answer.text))
 
       # The Galaxy-Zoo decision trees, such as sloan_tree.coffee,
       # Use the actual question text as the leadsTo value,
@@ -55,7 +58,7 @@ class MurraycTreeExporter
       elementCheckbox.setAttribute("icon", checkbox.icon);
 
       # We use a child node, instead of an attribute, for this because it could contain newlines.
-      @_addNodeWithText(elementCheckbox, "text", checkbox.text)
+      @_addNodeWithText(elementCheckbox, "text", @_unescapeHtml(checkbox.text))
 
          
 
