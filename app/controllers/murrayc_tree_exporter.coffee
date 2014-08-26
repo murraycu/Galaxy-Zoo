@@ -41,6 +41,7 @@ class MurraycTreeExporter
       elementAnswer = @_addNode(elementQuestion, "answer")
       elementAnswer.setAttribute("id", key)
       elementAnswer.setAttribute("icon", answer.icon)
+      elementAnswer.setAttribute("examplesCount", answer.examples)
 
       # We use a child node, instead of an attribute, for this because it could contain newlines.
       @_addNodeWithText(elementAnswer, "text", @_unescapeHtml(answer.text))
