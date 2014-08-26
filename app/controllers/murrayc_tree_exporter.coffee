@@ -28,6 +28,13 @@ class MurraycTreeExporter
     element = @_addNode(parentNode, childNodeName)
     return @_addTextNode(element, childText)
 
+  _getExamplesCountForItem: (item) ->
+    # Check if it is defined at all:
+    if (!(item.examples?))
+      return 0
+
+    return item.examples;
+
   _addQuestionNode: (question) ->
     elementQuestion = @_addNode(@root, "question")
     elementQuestion.setAttribute("id", question.id)
@@ -41,7 +48,7 @@ class MurraycTreeExporter
       elementAnswer = @_addNode(elementQuestion, "answer")
       elementAnswer.setAttribute("id", key)
       elementAnswer.setAttribute("icon", answer.icon)
-      elementAnswer.setAttribute("examplesCount", answer.examples)
+      elementAnswer.setAttribute("examplesCount", @_getExamplesCountForItem(answer))
 
       # We use a child node, instead of an attribute, for this because it could contain newlines.
       @_addNodeWithText(elementAnswer, "text", @_unescapeHtml(answer.text))
@@ -57,6 +64,7 @@ class MurraycTreeExporter
       elementCheckbox = @_addNode(elementQuestion, "checkbox")
       elementCheckbox.setAttribute("id", key)
       elementCheckbox.setAttribute("icon", checkbox.icon);
+      elementCheckbox.setAttribute("examplesCount", @_getExamplesCountForItem(checkbox))
 
       # We use a child node, instead of an attribute, for this because it could contain newlines.
       @_addNodeWithText(elementCheckbox, "text", @_unescapeHtml(checkbox.text))
