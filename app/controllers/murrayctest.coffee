@@ -1,5 +1,4 @@
 Spine = require 'spine'
-SloanTree = require 'lib/sloan_tree'
 JQuery = require 'jqueryify'
 Underscore = require 'underscore/underscore'
 MurraycTreeExporter = require 'controllers/murrayc_tree_exporter'

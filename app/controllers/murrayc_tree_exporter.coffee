@@ -1,5 +1,7 @@
 Spine = require 'spine'
 SloanTree = require 'lib/sloan_tree'
+GoodsTree = require 'lib/goods_full_tree'
+CandelsTree = require 'lib/candels_tree'
 JQuery = require 'jqueryify'
 Underscore = require 'underscore/underscore'
 
@@ -79,7 +81,9 @@ class MurraycTreeExporter
           @_getQuestionsForQuestionAnswers(questionNext)
 
    _getQuestions: ->
-     question = SloanTree.first()
+     # question = SloanTree.first()
+     # question = GoodsTree.first()
+     question = CandelsTree.first()
      if (question == null)
        return;
 
