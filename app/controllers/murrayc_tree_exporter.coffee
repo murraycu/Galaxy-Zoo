@@ -3,6 +3,8 @@ SloanTree = require 'lib/sloan_tree'
 GoodsTree = require 'lib/goods_full_tree'
 CandelsTree = require 'lib/candels_tree'
 SloanSinglebandTree = require 'lib/sloan_singleband_tree'
+DecalsTree = require 'lib/decals_tree'
+IllustrisTree = require 'lib/illustris_tree'
 JQuery = require 'jqueryify'
 Underscore = require 'underscore/underscore'
 
@@ -40,6 +42,15 @@ class MurraycTreeExporter
 
   _addQuestionNode: (question) ->
     elementQuestion = @_addNode(@root, "question")
+
+    if (question == null)
+      elementQuestion.setAttribute("error", "null question")
+      return
+
+    if (question.title == null)
+      elementQuestion.setAttribute("error", "null title")
+      return
+
     elementQuestion.setAttribute("id", question.id)
 
     # We use child nodes, instead of attributes, for these because they could contain newlines.
@@ -49,6 +60,15 @@ class MurraycTreeExporter
 
     for key, answer of question.answers
       elementAnswer = @_addNode(elementQuestion, "answer")
+
+      if (answer == null)
+        elementAnswer.setAttribute("error", "null answer")
+        continue;
+
+      if (answer.title == null)
+        elementAnswer.setAttribute("error", "null title")
+        continue;
+
       elementAnswer.setAttribute("id", key)
       elementAnswer.setAttribute("icon", answer.icon)
       elementAnswer.setAttribute("examplesCount", @_getExamplesCountForItem(answer))
@@ -85,7 +105,9 @@ class MurraycTreeExporter
      # question = SloanTree.first()
      # question = GoodsTree.first()
      # question = CandelsTree.first()
-     question = SloanSinglebandTree.first()
+     # question = SloanSinglebandTree.first()
+     # question = DecalsTree.first()
+     question = IllustrisTree.first()
      if (question == null)
        return;
 
@@ -112,6 +134,9 @@ class MurraycTreeExporter
     keys = Object.keys(@questions).sort();
     for key in keys
       question = @questions[key]
+      if(question == null)
+         return "No question for key"
+
       @_addQuestionNode(question)
 
     txt = new XMLSerializer().serializeToString(@xmlDoc)
