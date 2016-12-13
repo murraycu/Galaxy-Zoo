@@ -5,6 +5,7 @@ CandelsTree = require 'lib/candels_tree'
 SloanSinglebandTree = require 'lib/sloan_singleband_tree'
 DecalsTree = require 'lib/decals_tree'
 IllustrisTree = require 'lib/illustris_tree'
+FerengiTree = require 'lib/ferengi_tree'
 JQuery = require 'jqueryify'
 Underscore = require 'underscore/underscore'
 
@@ -107,7 +108,8 @@ class MurraycTreeExporter
      # question = CandelsTree.first()
      # question = SloanSinglebandTree.first()
      # question = DecalsTree.first()
-     question = IllustrisTree.first()
+     # question = IllustrisTree.first()
+     question = FerengiTree.first()
      if (question == null)
        return;
 
